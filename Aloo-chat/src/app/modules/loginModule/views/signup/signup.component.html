@@ -1,0 +1,14 @@
+<h2 class="text-center">Sign Up </h2>
+
+<div class="row px-3">
+    <div class="col text-center">
+        <app-progress-bar [steps]='steps'></app-progress-bar>
+    </div>
+</div>
+
+<app-personal-details [parentForm]="signupForm" *ngIf="currentStep === 'Personal Details'"></app-personal-details>
+
+<form [formGroup]="signupForm" (submit)="submit()" novalidate>
+    <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">signup</button>
+</form>
+<small><a [routerLink]="'/auth/login'">Already have an account</a></small>

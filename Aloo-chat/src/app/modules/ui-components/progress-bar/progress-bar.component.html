@@ -1,0 +1,9 @@
+<ul id="progressbar">
+    <ng-container *ngFor="let step of steps; let first = first; let last = last; let index = index;">
+        <li class="step0 " [ngClass]="{'text-center': !first && !last, 'text-left': first, 'text-right': last && index !== 0, 'active': step.isActive}" id="step-{{index + 1}}">
+            {{step.stepName}}
+        </li>   
+    </ng-container> 
+</ul>
+
+        
