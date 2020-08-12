@@ -12,25 +12,25 @@ import { PasswordComponent } from './views/signup/views/password/password.compon
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    LoginRootComponent,
-    LoginComponent,
-    SignUpComponent,
-    PersonalDetailsComponent,
-    // AddressComponent,
-    // ContactDetailsComponent,
-    // PasswordComponent
-  ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    ReactiveFormsModule,
-    UiComponentsModule
-  ],
-  exports: [
-      LoginComponent,
-      SignUpComponent
-  ],
-  providers: []
+	declarations: [
+		LoginRootComponent,
+		LoginComponent,
+		SignUpComponent,
+		PersonalDetailsComponent,
+		// AddressComponent,
+		// ContactDetailsComponent,
+		// PasswordComponent
+	],
+	imports: [
+		CommonModule,
+		LoginRoutingModule,
+		ReactiveFormsModule,
+		UiComponentsModule
+	],
+	exports: [
+		LoginComponent,
+		SignUpComponent
+	],
+	providers: []
 })
 export class LoginModule { }
