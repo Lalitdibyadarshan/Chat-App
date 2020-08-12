@@ -1,6 +1,20 @@
-<p>login root</p>
-<div class="container d-flex justify-content-center align-items-center">
+
+<!-- <div class="container d-flex justify-content-center align-items-center">
     <div class="form-wrapper text-center">
         <router-outlet></router-outlet>
     </div>
+</div> -->
+
+<div class="d-flex login--container">
+	<div class="login--container__left-panel animation--floating">
+		<img [src]="doodles" [doodle]= 'true' class="login--doodle" alt="">
+	</div>
+	<div class="login--container__right-panel">
+			<div class="login--form-wrapper text-center shadow">
+				<div class="form">
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+	</div>
+
 </div>

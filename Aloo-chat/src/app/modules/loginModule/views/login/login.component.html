@@ -1,13 +1,17 @@
 <h2 class="text-center">Login </h2>
 <form [formGroup]="loginForm" (submit)="submit()" novalidate>
-    <div class="form-group">
-        <input type="email" class="form-control" id="email-input" placeholder="Enter your Email Id"
-            formControlName="email">
-    </div>
-    <div class="form-group">
-        <input type="password" class="form-control" id="password-input" placeholder="Enter your password"
-            formControlName="password">
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+	<!-- <div class="form-group">
+		<input type="email" class="form-control" id="email-input" placeholder="Enter your Email Id"
+			formControlName="email">
+	</div> -->
+	<div class="form-group">
+		<app-input-email [formGroup]='loginForm' [formControlName]="'email'" [isRequired]='true'></app-input-email>
+	</div>
+
+	<div class="form-group">
+		<input type="password" class="form-control" id="password-input" placeholder="Enter your password"
+			formControlName="password">
+	</div>
+	<button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
 </form>
 <small><a [routerLink]="'/auth/signup'">Create an account</a></small>

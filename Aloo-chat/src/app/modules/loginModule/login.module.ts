@@ -10,6 +10,7 @@ import { AddressComponent } from './views/signup/views/address/address.component
 import { ContactDetailsComponent } from './views/signup/views/contact-details/contact-details.component';
 import { PasswordComponent } from './views/signup/views/password/password.component';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../sharedModule/shared.module';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { CommonModule } from '@angular/common';
 		CommonModule,
 		LoginRoutingModule,
 		ReactiveFormsModule,
-		UiComponentsModule
+		UiComponentsModule,
+		SharedModule
 	],
 	exports: [
 		LoginComponent,
