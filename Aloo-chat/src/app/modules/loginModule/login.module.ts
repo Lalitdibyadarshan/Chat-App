@@ -18,9 +18,9 @@ import { SharedModule } from '../sharedModule/shared.module';
 		LoginComponent,
 		SignUpComponent,
 		PersonalDetailsComponent,
-		// AddressComponent,
-		// ContactDetailsComponent,
-		// PasswordComponent
+		AddressComponent,
+		ContactDetailsComponent,
+		PasswordComponent
 	],
 	imports: [
 		CommonModule,
