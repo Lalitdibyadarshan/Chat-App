@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormControlEnum } from '../../enums/form-control.enum';
+import { RegexEnum } from 'src/app/modules/sharedModule/enums/regex.enum';
+import { SignupConstant } from '../../constants/signup.constant';
 
 @Component({
 	selector: 'app-personal-details',
@@ -9,12 +11,10 @@ import { FormControlEnum } from '../../enums/form-control.enum';
 export class PersonalDetailsComponent implements OnInit {
 	@Input() parentForm: FormGroup;
 
+	pattern = RegexEnum.NAME;
+	maxLength = SignupConstant.NAME_MAXLENGTH;
+
 	ngOnInit() {
-		this.addFormControllers();
 	}
 
-	private addFormControllers(): void {
-		this.parentForm.addControl(FormControlEnum.FIRST_NAME, new FormControl('', Validators.required));
-		this.parentForm.addControl(FormControlEnum.LAST_NAME, new FormControl('', Validators.required));
-	}
 }

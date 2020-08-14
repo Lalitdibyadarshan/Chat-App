@@ -1,0 +1,36 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+	<ng-container *ngFor='let stepName of stepNames; let index = index; let first = first; let last = last;'>
+		<mat-step [stepControl]="parentForm">
+			<form [formGroup]="parentForm">
+			  <ng-template matStepLabel>{{stepName}}</ng-template>
+				<ng-content></ng-content>
+
+			  <div>
+				<button mat-button matStepperPrevious *ngIf="!first">Back</button>
+				<button mat-button (click)="stepper.reset()" *ngIf='last'>Reset</button>
+				<button mat-button matStepperNext *ngIf='!last'>Next</button>
+			  </div>
+			</form>
+		  </mat-step>
+	</ng-container>
+
+	<!-- <mat-step [stepControl]="parentForm" label="Fill out your address">
+	  <form [formGroup]="parentForm">
+
+		  <app-input [parentForm]= 'parentForm' [required]='true'></app-input>
+
+		<div>
+		  <button mat-button matStepperPrevious>Back</button>
+		  <button mat-button matStepperNext>Next</button>
+		</div>
+	  </form>
+	</mat-step>
+	<mat-step>
+	  <ng-template matStepLabel>Done</ng-template>
+	  <p>You are now done.</p>
+	  <div>
+		<button mat-button matStepperPrevious>Back</button>
+		<button mat-button (click)="stepper.reset()">Reset</button>
+	  </div>
+	</mat-step> -->
+  </mat-horizontal-stepper>

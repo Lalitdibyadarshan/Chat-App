@@ -1,34 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-input-email',
 	templateUrl: './email.component.html',
 	styleUrls: [
-		'./email.compoent.scss'
+		'./email.component.scss'
 	]
 })
-export class EmailComponent implements OnInit {
+export class EmailFormComponent implements OnInit {
 	@Input() formGroup: FormGroup;
-	@Input() formControlName: string;
+	@Input() controlName: string;
 	@Input() isRequired = false;
 
-	validators: ValidatorFn[] = [
-		Validators.email
-	];
 	formControl: FormControl;
 
 	ngOnInit() {
 		this.addFormControl();
 	}
 
-	addFormControl(): void {
+	private addFormControl(): void {
 		this.formControl = new FormControl('');
-		this.formGroup.addControl(this.formControlName, this.formControl);
+		this.formGroup.addControl(this.controlName, this.formControl);
 		this.addValidators();
 	}
 
-	addValidators(): void {
+	private addValidators(): void {
 		this.isRequired ?
 		this.formControl.setValidators([Validators.required, Validators.email]) :
 		this.formControl.setValidators([Validators.email]);

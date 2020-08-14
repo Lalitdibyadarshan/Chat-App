@@ -1,4 +1,4 @@
-<h2 class="text-center">Sign Up </h2>
+<!-- <h2 class="text-center">Sign Up </h2>
 
 <div class="row px-3">
     <div class="col text-center">
@@ -10,5 +10,6 @@
 
 <form [formGroup]="signupForm" (submit)="submit()" novalidate>
     <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">signup</button>
-</form>
+</form> -->
+<app-stepper [parentForm]='signupForm'></app-stepper>
 <small><a [routerLink]="'/auth/login'">Already have an account</a></small>

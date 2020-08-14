@@ -1,23 +1,40 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Input } from '@angular/core';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EmailComponent } from './email/email.component';
-import {MatInputModule} from '@angular/material/input';
+import { EmailFormComponent } from './email/email.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material';
+import { PasswordStrengthComponent } from './password/password-strength/password-strength.component';
+import { PasswordFormComponent } from './password/password.component';
+import { InputComponent } from './input/input.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
 	declarations: [
 		ProgressBarComponent,
-		EmailComponent
+		EmailFormComponent,
+		PasswordFormComponent,
+		PasswordStrengthComponent,
+		InputComponent,
+		StepperComponent
 	],
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,
-		MatInputModule
+		MatInputModule,
+		MatIconModule,
+		MatStepperModule,
+		MatButtonModule
 	],
 	exports: [
 		ProgressBarComponent,
-		EmailComponent
+		EmailFormComponent,
+		PasswordFormComponent,
+		InputComponent,
+		StepperComponent
 	],
 	providers: []
 })

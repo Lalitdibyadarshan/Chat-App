@@ -54,6 +54,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		overflow: auto;
+
+		@include media("<desktop") {
+			padding: 1em 1em;
+		}
 
 		>.form {
 			width: 100%;

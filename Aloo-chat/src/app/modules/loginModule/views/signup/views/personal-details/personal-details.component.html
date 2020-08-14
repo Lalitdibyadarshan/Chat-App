@@ -1,10 +1,10 @@
 <form [formGroup]="parentForm" novalidate>
-    <div class="form-group">
-        <input type="text" class="form-control" id="first-name-input" placeholder="First Name"
-            formControlName="firstName">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" id="last-name-input" placeholder="Last Name"
-            formControlName="lastName">
-    </div>
+	<div class="form-group">
+		<app-input type="text" labelName="First Name" [parentForm]='parentForm' [controlName]="'firstName'"
+			[required]='true' [pattern]='pattern' [maxLength]='maxLength'></app-input>
+	</div>
+	<div class="form-group">
+		<app-input type="text" labelName="Last Name" [parentForm]='parentForm' [controlName]="'lastName'"
+			[required]='false' [pattern]='pattern' [maxLength]='maxLength'></app-input>
+	</div>
 </form>
