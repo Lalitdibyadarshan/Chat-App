@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StepModel } from 'src/app/modules/ui-components/progress-bar/model/step.model';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { SignupStepEnum } from './enums/step.enum';
 import { SignupConstant } from './constants/signup.constant';
 
@@ -11,15 +10,18 @@ import { SignupConstant } from './constants/signup.constant';
 })
 export class SignUpComponent implements OnInit {
 	signupForm: FormGroup;
-	steps: StepModel[];
+	steps = SignupConstant.SIGNUP_STEPS;
 	currentStep: SignupStepEnum;
 
-	constructor(private fb: FormBuilder) {
+	mobile = false;
+	constructor(private fb: FormBuilder, @Inject('Window') private window: Window) {
 	}
 
 	ngOnInit() {
-		this.createSteps();
 		this.createForm();
+		if (this.window.innerWidth < 766) {
+			this.mobile = true;
+		}
 	}
 
 	private createForm() {
@@ -27,32 +29,14 @@ export class SignUpComponent implements OnInit {
 	}
 
 	submit(): void {
+		if (!this.signupForm.valid) { return; }
 		// TODO auth call
 		const { firstName, lastName } = this.signupForm.value;
 		console.log(`name: ${firstName} ${lastName}`);
 	}
 
-	createSteps() {
-		this.currentStep = SignupStepEnum.PERSONAL_DETAILS;
-		this.steps = SignupConstant.SIGNUP_STEPS.map(step => {
-			return new StepModel(step, false);
-		});
-	}
-
-	goToNextStep() {
-
-	}
-
-	goToPreviousStep() {
-
-	}
-
-	isFirstStep() {
-
-	}
-
-	isLastStep() {
-
+	getCallback() {
+		return this.submit.bind(this);
 	}
 
 }

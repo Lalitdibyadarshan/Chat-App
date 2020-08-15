@@ -3,10 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-input-email',
-	templateUrl: './email.component.html',
-	styleUrls: [
-		'./email.component.scss'
-	]
+	templateUrl: './email.component.html'
 })
 export class EmailFormComponent implements OnInit {
 	@Input() formGroup: FormGroup;

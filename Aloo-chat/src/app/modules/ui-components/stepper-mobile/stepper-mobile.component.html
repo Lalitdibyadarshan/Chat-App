@@ -17,9 +17,8 @@
 <ng-template #step5Template>
 	<ng-content select='.step5'></ng-content>
 </ng-template>
-
-<div class="stepper--horizontal">
-	<mat-horizontal-stepper  [linear]="true" #stepper>
+<div class="stepper--vertical">
+	<mat-vertical-stepper  [linear]="true" #stepper>
 		<ng-container *ngFor='let step of stepNames; let first = first; let last = last; let index= index;'>
 			<mat-step [stepControl]="parentForm">
 				<ng-template matStepLabel>{{step}}</ng-template>
@@ -49,6 +48,5 @@
 				</form>
 			</mat-step>
 		</ng-container>
-	</mat-horizontal-stepper>
+	  </mat-vertical-stepper>
 </div>
-

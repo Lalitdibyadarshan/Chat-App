@@ -1,7 +1,27 @@
 @import "../../../../../styles/variables.scss";
+@import "../../../../../styles/include-media.scss";
 
-h2 {
-    color: $black;
-    margin-bottom: 1em;
+.signup {
+	margin-bottom: 1em;
+	&--stepper {
+		&__horizontal {
+			display: block;
+
+			@include media("<tablet") {
+				display: none;
+			}
+		}
+
+		&__vertical {
+			margin-top: 2%;
+		}
+	}
+
+	&--title {
+		color: $black;
+		@include media("<tablet") {
+			margin-top: 8em;
+		}
+	}
+
 }
-

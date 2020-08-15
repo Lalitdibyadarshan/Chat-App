@@ -3,10 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-input-password',
-	templateUrl: './password.component.html',
-	styleUrls: [
-		'./password.component.scss'
-	]
+	templateUrl: './password.component.html'
 })
 export class PasswordFormComponent implements OnInit {
 	@Input() formGroup: FormGroup;

@@ -33,6 +33,8 @@ import { SharedModule } from '../sharedModule/shared.module';
 		LoginComponent,
 		SignUpComponent
 	],
-	providers: []
+	providers: [
+		{ provide: 'Window',  useValue: window }
+	]
 })
 export class LoginModule { }
