@@ -1,20 +1,20 @@
 <mat-form-field class="full-width" appearance="outline">
-	<mat-label>{{labelName}}</mat-label>
-	<input matInput [type]="type" [formControl]="formControl" [placeholder]="labelName">
+	<mat-label>{{getLableName()}}</mat-label>
+	<input matInput [type]="type" [formControl]="formControl" (blur)="formatInput()" [placeholder]="labelName">
 
-	<mat-error *ngIf="formControl.hasError('required')">
-		{{labelName}} is <strong>required</strong>
+	<mat-error *ngIf="formControl.hasError('required')" class="warning">
+		{{labelName}} is <b class="warning">required</b>
 	</mat-error>
 
-	<mat-error *ngIf="formControl.hasError('minLength')">
+	<mat-error *ngIf="formControl.hasError('minLength')" class="warning">
 		{{labelName}} should have at least {{minLength}} characters
 	</mat-error>
 
-	<mat-error *ngIf="formControl.hasError('maxLength')">
+	<mat-error *ngIf="formControl.hasError('maxLength')" class="warning">
 		{{labelName}} should have maximum {{minLength}} characters
 	</mat-error>
 
-	<mat-error *ngIf="formControl.hasError('pattern')">
+	<mat-error *ngIf="formControl.hasError('pattern')" class="warning">
 		Illegals characters
 	</mat-error>
 </mat-form-field>

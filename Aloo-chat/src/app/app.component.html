@@ -1,3 +1,4 @@
-<div class="background--abstract__diamonds">
+<div class="background--abstract__diamonds" [ngClass]='theme'>
+	<app-top-nav [title]='title'></app-top-nav>
 	<router-outlet></router-outlet>
 </div>

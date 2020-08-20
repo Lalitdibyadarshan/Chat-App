@@ -11,7 +11,12 @@ import { InputComponent } from './input/input.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 import { StepperMobileComponent } from './stepper-mobile/stepper-mobile.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { TopNavigationComponent } from './top-navigation/top-navigation.component';
 
 @NgModule({
 	declarations: [
@@ -21,7 +26,9 @@ import { StepperMobileComponent } from './stepper-mobile/stepper-mobile.componen
 		PasswordStrengthComponent,
 		InputComponent,
 		StepperComponent,
-		StepperMobileComponent
+		StepperMobileComponent,
+		DatePickerComponent,
+		TopNavigationComponent
 	],
 	imports: [
 		CommonModule,
@@ -29,7 +36,10 @@ import { StepperMobileComponent } from './stepper-mobile/stepper-mobile.componen
 		MatInputModule,
 		MatIconModule,
 		MatStepperModule,
-		MatButtonModule
+		MatButtonModule,
+		MatMomentDateModule,
+		MatToolbarModule,
+		MatMenuModule
 	],
 	exports: [
 		ProgressBarComponent,
@@ -37,7 +47,9 @@ import { StepperMobileComponent } from './stepper-mobile/stepper-mobile.componen
 		PasswordFormComponent,
 		InputComponent,
 		StepperComponent,
-		StepperMobileComponent
+		StepperMobileComponent,
+		DatePickerComponent,
+		TopNavigationComponent
 	],
 	providers: []
 })

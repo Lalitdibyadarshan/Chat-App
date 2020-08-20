@@ -1,5 +1,6 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { FormService } from '../../sharedModule/services/form.service';
 
 @Component({
 	selector: 'app-stepper-mobile',
@@ -11,4 +12,9 @@ export class StepperMobileComponent {
 	@Input() stepNames: string[];
 	@Input() submitCallBack: () => void;
 
+	constructor(private formService: FormService, private elRef: ElementRef) {}
+
+	checkFormValidity() {
+		this.formService.checkFormValidity(this.parentForm, this.elRef);
+	}
 }

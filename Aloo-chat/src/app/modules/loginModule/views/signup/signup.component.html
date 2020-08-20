@@ -1,24 +1,24 @@
-<div class ="signup">
-<h2 class="text-center signup--title">Sign up </h2>
+<div class="signup">
+	<h2 class="text-center signup--title">Sign up </h2>
 
-<div *ngIf = "!mobile">
-	<app-stepper [parentForm]='signupForm' [stepNames]="steps" [submitCallBack]='getCallback()'>
-		<app-personal-details class='step1' [parentForm]="signupForm"></app-personal-details>
-		<h1 class="step2">Step 2</h1>
-		<h1 class="step3">Step 3</h1>
-		<h1 class="step4">Step 4</h1>
-		<h1 class="step5">Step 5</h1>
-	</app-stepper>
-</div>
+	<div *ngIf="!mobile">
+		<app-stepper [parentForm]='signupForm' [stepNames]="steps" [submitCallBack]='getCallback()'>
+			<app-personal-details class='step1' [parentForm]="signupForm"></app-personal-details>
+			<h1 class="step2">Step 2</h1>
+			<h1 class="step3">Step 3</h1>
+			<h1 class="step4">Step 4</h1>
+			<h1 class="step5">Step 5</h1>
+		</app-stepper>
+	</div>
 
-<div *ngIf="mobile" class="signup--stepper__vertical">
-	<app-stepper-mobile [parentForm]='signupForm' [stepNames]="steps" [submitCallBack]='getCallback()'>
-		<app-personal-details class='step1' [parentForm]="signupForm"></app-personal-details>
-		<h1 class="step2">Step 2</h1>
-		<h1 class="step3">Step 3</h1>
-		<h1 class="step4">Step 4</h1>
-		<h1 class="step5">Step 5</h1>
-	</app-stepper-mobile>
-</div>
-<small ><a [routerLink]="'/auth/login'">Already have an account</a></small>
+	<div *ngIf="mobile" class="signup--stepper__vertical">
+		<app-stepper-mobile [parentForm]='signupForm' [stepNames]="steps" [submitCallBack]='getCallback()'>
+			<app-personal-details class='step1' [parentForm]="signupForm"></app-personal-details>
+			<h1 class="step2">Step 2</h1>
+			<h1 class="step3">Step 3</h1>
+			<h1 class="step4">Step 4</h1>
+			<h1 class="step5">Step 5</h1>
+		</app-stepper-mobile>
+	</div>
+	<small><a [routerLink]="'/auth/login'" class="link">Already have an account? Please login</a></small>
 </div>

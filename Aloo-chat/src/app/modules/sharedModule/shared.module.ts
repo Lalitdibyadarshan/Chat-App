@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { NgxsModule } from '@ngxs/store';
 import { ImageSrcDirective } from './directives/image-src.directive';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
 	declarations: [
@@ -12,7 +13,8 @@ import { ImageSrcDirective } from './directives/image-src.directive';
 
 		], {
 			developmentMode: !environment.production
-		})
+		}),
+		CommonModule
 	],
 	exports: [
 		ImageSrcDirective

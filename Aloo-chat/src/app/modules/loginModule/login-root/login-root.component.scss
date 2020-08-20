@@ -1,68 +1,68 @@
-@import "../../../../styles/variables.scss";
 @import "../../../../styles/include-media.scss";
 
-.container {
-	height: 100vh;
-}
 
-.login {
-	&--container {
+	.container {
 		height: 100vh;
-		width: 100vw;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		overflow-x: hidden;
-		justify-content: center;
-		position: relative;
+	}
 
-		&__left-panel {
-			height: 100%;
-			width: 30%;
+	.login {
+		&--container {
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			overflow-x: hidden;
+			justify-content: center;
+			position: absolute;
+
+
+			&__left-panel {
+				height: 100%;
+				width: 35%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				@include media("<desktop") {
+					width: 100%;
+					display: none;
+				}
+			}
+
+			&__right-panel {
+				height: 100%;
+				width: 65%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				@include media("<desktop") {
+					width: 100%;
+				}
+			}
+		}
+
+		&--doodle {
+			width: 80%;
+		}
+
+		&--form-wrapper {
+			padding: 1em 2em;
+			width: 90%;
+			height: 80%;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			overflow: auto;
+			margin-top: 1em;
 
 			@include media("<desktop") {
-				width: 100%;
-				display: none;
+				padding: 1em 1em;
 			}
-		}
 
-		&__right-panel {
-			height: 100%;
-			width: 65%;
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-
-			@include media("<desktop") {
+			> .form {
 				width: 100%;
-				justify-content: center;
 			}
 		}
 	}
-
-	&--doodle {
-		width: 80%;
-	}
-
-	&--form-wrapper {
-		background-color: white;
-		padding: 1em 2em;
-		width: 90%;
-		height: 80%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		overflow: auto;
-
-		@include media("<desktop") {
-			padding: 1em 1em;
-		}
-
-		>.form {
-			width: 100%;
-		}
-	}
-}

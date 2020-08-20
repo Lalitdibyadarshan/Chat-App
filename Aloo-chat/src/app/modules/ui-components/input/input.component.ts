@@ -32,7 +32,7 @@ export class InputComponent implements OnInit {
 	getValidators(): ValidatorFn[] {
 		const ValidatorsList: ValidatorFn[] = [];
 		[ValidatorsConstant.MAXLENGTH,
-			ValidatorsConstant.MINLENGTH, ValidatorsConstant.PATTERN].forEach(validator => {
+		ValidatorsConstant.MINLENGTH, ValidatorsConstant.PATTERN].forEach(validator => {
 			if (this[validator]) {
 				ValidatorsList.push(Validators[validator](this[validator]));
 			}
@@ -42,5 +42,16 @@ export class InputComponent implements OnInit {
 			ValidatorsList.push(Validators.required);
 		}
 		return ValidatorsList;
+	}
+
+	getLableName() {
+		return this.required ? this.labelName + ' *' : this.labelName;
+	}
+
+	formatInput() {
+		if (this.formControl.value) {
+			const formattedValue = this.formControl.value.replace(/ +/g, ' ').trim();
+			this.formControl.patchValue(formattedValue);
+		}
 	}
 }

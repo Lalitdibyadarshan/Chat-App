@@ -1,0 +1,32 @@
+@mixin ng-components($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$warning: map-get($theme, warn);
+	$background: map-get($theme, background);
+	$foreground: map-get($theme, foreground);
+
+	.login {
+		&--container {
+			&__left-panel {
+				background-color: map-get($background, card);
+			}
+
+			&__right-panel {
+				background-color: map-get($background, background);
+			}
+		}
+
+		&--form-wrapper {
+			background-color: map-get($background, card);
+		}
+	}
+
+	.mat-icon {
+		color: map-get($foreground, text) !important;
+	}
+
+	.warning {
+		color: map-get($warning, default) !important;
+	}
+
+}

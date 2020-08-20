@@ -1,0 +1,57 @@
+@mixin ui-components($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$background: map-get($theme, background);
+	$foreground: map-get($theme, foreground);
+
+	* {
+		color: map-get($foreground, text);;
+	}
+
+	h2 {
+		color: map-get($foreground, text);
+		margin-bottom: 1em;
+	}
+
+	.link {
+		color: map-get($accent, lighter);
+		font-size: medium;
+		display: inline-block;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.button {
+		height: 5%;
+		width: max-content;
+		padding: 1em 2em;
+		background-color: map-get($primary, default);
+		border: none;
+		border-radius: 10px;
+		color: map-get($foreground, text);
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: $box-shadow;
+		}
+
+		&:disabled {
+			background-color: map-get($primary, lighter);
+			color: map-get($foreground, disabled-text);
+			cursor: default;
+
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
+		&--full{
+			width: 100%;
+		}
+	}
+
+	.cursor-pointer {
+		cursor: pointer;
+	}
+
+}

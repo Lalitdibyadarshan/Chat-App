@@ -29,7 +29,8 @@ export class SignUpComponent implements OnInit {
 	}
 
 	submit(): void {
-		if (!this.signupForm.valid) { return; }
+		console.log('here');
+
 		// TODO auth call
 		const { firstName, lastName } = this.signupForm.value;
 		console.log(`name: ${firstName} ${lastName}`);

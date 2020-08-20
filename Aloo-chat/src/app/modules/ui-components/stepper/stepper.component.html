@@ -40,11 +40,11 @@
 						<ng-container *ngTemplateOutlet="step5Template"></ng-container>
 					</ng-container>
 
-					<div>
-						<button  matStepperNext *ngIf='!last'>Next</button>
-						<button mat-button matStepperPrevious *ngIf='!first'>Back</button>
-						<button mat-button (click)="stepper.reset()" *ngIf='last'>Reset</button>
-						<button mat-button (click)="submitCallBack()" *ngIf='last'>Submit</button>
+					<div class="navigation">
+						<button *ngIf='!first' class="button" matStepperPrevious>Back</button>
+						<button *ngIf='last' class="button" (click)="stepper.reset()">Reset</button>
+						<button *ngIf='!last' class="button" (click)="checkFormValidity()" matStepperNext>Next</button>
+						<button *ngIf='last' class="button" (click)="submitCallBack()">Submit</button>
 					</div>
 				</form>
 			</mat-step>

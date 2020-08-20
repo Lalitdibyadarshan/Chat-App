@@ -40,10 +40,10 @@
 					</ng-container>
 
 					<div>
-						<button  matStepperNext *ngIf='!last'>Next</button>
-						<button mat-button matStepperPrevious *ngIf='!first'>Back</button>
-						<button mat-button (click)="stepper.reset()" *ngIf='last'>Reset</button>
-						<button mat-button (click)="submitCallBack()" *ngIf='last'>Submit</button>
+						<button *ngIf='!first' class="button full-width" matStepperPrevious>Back</button>
+						<button *ngIf='last' class="button full-width" (click)="stepper.reset()">Reset</button>
+						<button *ngIf='!last' class="button full-width" (click)="checkFormValidity()" matStepperNext>Next</button>
+						<button *ngIf='last' class="button full-width" (click)="submitCallBack()">Submit</button>
 					</div>
 				</form>
 			</mat-step>
