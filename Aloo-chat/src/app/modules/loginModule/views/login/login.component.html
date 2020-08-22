@@ -1,10 +1,10 @@
 <h2 class="text-center">Login </h2>
 <form [formGroup]="loginForm" (submit)="submit()" novalidate>
 	<div class="form-group">
-		<app-input-email [formGroup]='loginForm' [controlName]="'email'" [isRequired]='true'></app-input-email>
+		<app-input-email [parentForm]='loginForm' [controlName]="'email'" [required]='true'></app-input-email>
 	</div>
 	<div class="form-group">
-		<app-input-password [formGroup]='loginForm' [controlName]="'password'" [checkStrength]='false'></app-input-password>
+		<app-input-password [parentForm]='loginForm' [controlName]="'password'" [checkStrength]='false'></app-input-password>
 	</div>
 	<button type="submit" class="button button--full" [disabled]="!loginForm.valid">Login</button>
 </form>

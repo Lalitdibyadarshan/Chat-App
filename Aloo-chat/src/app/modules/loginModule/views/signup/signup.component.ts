@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SignupStepEnum } from './enums/step.enum';
 import { SignupConstant } from './constants/signup.constant';
+import { FormControlEnum } from './enums/form-control.enum';
 
 @Component({
 	selector: 'app-signup',
@@ -9,7 +10,10 @@ import { SignupConstant } from './constants/signup.constant';
 	styleUrls: ['./signup.component.scss']
 })
 export class SignUpComponent implements OnInit {
-	signupForm: FormGroup;
+	signUpForms: FormGroup[];
+	personalDetailsForm: FormGroup;
+	contactDetailsForm: FormGroup;
+	passwordForm: FormGroup;
 	steps = SignupConstant.SIGNUP_STEPS;
 	currentStep: SignupStepEnum;
 
@@ -25,19 +29,23 @@ export class SignUpComponent implements OnInit {
 	}
 
 	private createForm() {
-		this.signupForm = this.fb.group({});
+		this.signUpForms = this.steps.map(step => {
+			return this.fb.group({});
+		});
 	}
 
 	submit(): void {
-		console.log('here');
-
 		// TODO auth call
-		const { firstName, lastName } = this.signupForm.value;
-		console.log(`name: ${firstName} ${lastName}`);
+		const { firstName, lastName } = this.signUpForms[0].value;
+		const { email, phoneNumber } = this.signUpForms[1].value;
+		const { newPassword } = this.signUpForms[2].value;
+		console.log(`name: ${firstName} ${lastName}
+		email: ${email}
+		phone: ${phoneNumber}
+		password: ${newPassword}`);
 	}
 
 	getCallback() {
 		return this.submit.bind(this);
 	}
-
 }

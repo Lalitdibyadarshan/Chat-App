@@ -12,11 +12,10 @@ import { StepperComponent } from './stepper/stepper.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { StepperMobileComponent } from './stepper-mobile/stepper-mobile.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
-import { TopNavigationComponent } from './top-navigation/top-navigation.component';
+import { SharedModule } from '../sharedModule/shared.module';
 
 @NgModule({
 	declarations: [
@@ -27,8 +26,7 @@ import { TopNavigationComponent } from './top-navigation/top-navigation.componen
 		InputComponent,
 		StepperComponent,
 		StepperMobileComponent,
-		DatePickerComponent,
-		TopNavigationComponent
+		DatePickerComponent
 	],
 	imports: [
 		CommonModule,
@@ -38,8 +36,8 @@ import { TopNavigationComponent } from './top-navigation/top-navigation.componen
 		MatStepperModule,
 		MatButtonModule,
 		MatMomentDateModule,
-		MatToolbarModule,
-		MatMenuModule
+		MatDatepickerModule,
+		SharedModule
 	],
 	exports: [
 		ProgressBarComponent,
@@ -48,8 +46,7 @@ import { TopNavigationComponent } from './top-navigation/top-navigation.componen
 		InputComponent,
 		StepperComponent,
 		StepperMobileComponent,
-		DatePickerComponent,
-		TopNavigationComponent
+		DatePickerComponent
 	],
 	providers: []
 })

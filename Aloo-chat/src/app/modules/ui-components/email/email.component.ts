@@ -6,9 +6,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 	templateUrl: './email.component.html'
 })
 export class EmailFormComponent implements OnInit {
-	@Input() formGroup: FormGroup;
+	@Input() parentForm: FormGroup;
 	@Input() controlName: string;
-	@Input() isRequired = false;
+	@Input() required;
 
 	formControl: FormControl;
 
@@ -18,12 +18,12 @@ export class EmailFormComponent implements OnInit {
 
 	private addFormControl(): void {
 		this.formControl = new FormControl('');
-		this.formGroup.addControl(this.controlName, this.formControl);
+		this.parentForm.addControl(this.controlName, this.formControl);
 		this.addValidators();
 	}
 
 	private addValidators(): void {
-		this.isRequired ?
+		this.required ?
 		this.formControl.setValidators([Validators.required, Validators.email]) :
 		this.formControl.setValidators([Validators.email]);
 	}

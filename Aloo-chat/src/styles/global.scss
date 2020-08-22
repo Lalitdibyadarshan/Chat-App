@@ -7,7 +7,7 @@
 
 	.active {
 		color: map-get($foreground, text) !important;
-		background-color: map-get($primary, darker);
+		background-color: darken(map-get($primary, lighter), 20%);
 	}
 
 	.shadow {

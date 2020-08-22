@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './modules/sharedModule/shared.module';
 import { UiComponentsModule } from './modules/ui-components/ui-components.module';
+import { TopNavModule } from './modules/topNavModule/top-nav.module';
 
 @NgModule({
 	declarations: [
@@ -15,7 +16,7 @@ import { UiComponentsModule } from './modules/ui-components/ui-components.module
 		BrowserModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
-		UiComponentsModule
+		TopNavModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

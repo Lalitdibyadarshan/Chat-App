@@ -8,8 +8,14 @@ import { Component, Input, OnChanges, Output, EventEmitter, SimpleChange, OnInit
 	]
 })
 export class PasswordStrengthComponent implements OnChanges {
+	lowerLetters: boolean;
+	upperLetters: boolean;
+	numbers: boolean;
+	symbols: boolean;
+
 	@Input() public passwordToCheck: string;
 	@Output() passwordStrength = new EventEmitter<boolean>();
+
 	bar0: string;
 	bar1: string;
 	bar2: string;
@@ -18,16 +24,16 @@ export class PasswordStrengthComponent implements OnChanges {
 	msg = '';
 	private colors = ['darkred', 'orangered', 'orange', 'yellowgreen'];
 
-	private static checkStrength(p) {
+	private checkStrength(p) {
 		let force = 0;
 		const regex = /[$-/:-?{-~!"^_@`\[\]]/g;
 
-		const lowerLetters = /[a-z]+/.test(p);
-		const upperLetters = /[A-Z]+/.test(p);
-		const numbers = /[0-9]+/.test(p);
-		const symbols = regex.test(p);
+		this.lowerLetters = /[a-z]+/.test(p);
+		this.upperLetters = /[A-Z]+/.test(p);
+		this.numbers = /[0-9]+/.test(p);
+		this.symbols = regex.test(p);
 
-		const flags = [lowerLetters, upperLetters, numbers, symbols];
+		const flags = [this.lowerLetters, this.upperLetters, this.numbers, this.symbols];
 
 		let passedMatches = 0;
 		for (const flag of flags) {
@@ -52,28 +58,27 @@ export class PasswordStrengthComponent implements OnChanges {
 	ngOnChanges(changes: { [propName: string]: SimpleChange }): void {
 		const password = changes.passwordToCheck.currentValue;
 		this.setBarColors(4, '#DDD');
-		if (password) {
-			const c = this.getColor(PasswordStrengthComponent.checkStrength(password));
-			this.setBarColors(c.idx, c.col);
+		const c = this.getColor(this.checkStrength(password));
+		this.setBarColors(c.idx, c.col);
 
-			const pwdStrength = PasswordStrengthComponent.checkStrength(password);
-			pwdStrength === 40 ? this.passwordStrength.emit(true) : this.passwordStrength.emit(false);
+		const pwdStrength = this.checkStrength(password);
+		pwdStrength === 40 ? this.passwordStrength.emit(true) : this.passwordStrength.emit(false);
 
-			switch (c.idx) {
-				case 1:
-					this.msg = 'Poor';
-					break;
-				case 2:
-					this.msg = 'Not Good';
-					break;
-				case 3:
-					this.msg = 'Average';
-					break;
-				case 4:
-					this.msg = 'Good';
-					break;
-			}
-		} else {
+		switch (c.idx) {
+			case 1:
+				this.msg = 'Poor';
+				break;
+			case 2:
+				this.msg = 'Not Good';
+				break;
+			case 3:
+				this.msg = 'Average';
+				break;
+			case 4:
+				this.msg = 'Good';
+				break;
+		}
+		if (!password) {
 			this.msg = '';
 		}
 	}

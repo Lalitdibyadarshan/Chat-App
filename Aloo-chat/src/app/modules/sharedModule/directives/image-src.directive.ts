@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef, OnInit } from '@angular/core';
-import { ImagePathEnum } from './image-path.enum';
+import { ImagePathEnum } from '../enums/image-path.enum';
 
 @Directive({
 	// tslint:disable-next-line: directive-selector

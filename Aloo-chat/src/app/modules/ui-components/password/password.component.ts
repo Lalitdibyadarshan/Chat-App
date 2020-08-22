@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 	templateUrl: './password.component.html'
 })
 export class PasswordFormComponent implements OnInit {
-	@Input() formGroup: FormGroup;
+	@Input() parentForm: FormGroup;
 	@Input() controlName: string;
 	@Input() checkStrength: boolean;
 
@@ -21,7 +21,7 @@ export class PasswordFormComponent implements OnInit {
 
 	addFormControl(): void {
 		this.formControl = new FormControl('');
-		this.formGroup.addControl(this.controlName, this.formControl);
+		this.parentForm.addControl(this.controlName, this.formControl);
 		this.formControl.setValidators([Validators.required, Validators.minLength(8)]);
 	}
 

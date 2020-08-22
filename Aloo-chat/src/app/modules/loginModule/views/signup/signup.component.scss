@@ -18,8 +18,12 @@
 
 	&--title {
 		@include media("<tablet") {
-			margin-top: 8em;
+			margin-top: 5em;
 		}
+	}
+
+	.link {
+		margin: 0px;
 	}
 
 }

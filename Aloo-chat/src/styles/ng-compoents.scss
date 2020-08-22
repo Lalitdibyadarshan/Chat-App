@@ -1,3 +1,5 @@
+@import "./include-media.scss";
+
 @mixin ng-components($theme) {
 	$primary: map-get($theme, primary);
 	$accent: map-get($theme, accent);
@@ -27,6 +29,30 @@
 
 	.warning {
 		color: map-get($warning, default) !important;
+	}
+
+	.success {
+		color: greenyellow;
+	}
+
+	.stepper--vertical {
+		.mat-stepper-vertical-line::before {
+			@include media('<tablet') {
+				left: -21px
+			}
+		}
+
+		.mat-vertical-stepper-header  {
+			@include media('<tablet') {
+				padding-left: 5px !important;
+			}
+		}
+
+		.mat-vertical-content {
+			@include media('<tablet') {
+				padding: 0 0 24px;
+			}
+		}
 	}
 
 }

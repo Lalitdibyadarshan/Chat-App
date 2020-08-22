@@ -20,9 +20,9 @@
 <div class="stepper--vertical">
 	<mat-vertical-stepper  [linear]="true" #stepper>
 		<ng-container *ngFor='let step of stepNames; let first = first; let last = last; let index= index;'>
-			<mat-step [stepControl]="parentForm">
+			<mat-step [stepControl]="parentForms[index]">
 				<ng-template matStepLabel>{{step}}</ng-template>
-				<form [formGroup]='parentForm'>
+				<form [formGroup]='parentForms[index]'>
 					<ng-container *ngIf="index===0">
 						<ng-container *ngTemplateOutlet="step1Template"></ng-container>
 					</ng-container>
@@ -42,7 +42,7 @@
 					<div>
 						<button *ngIf='!first' class="button full-width" matStepperPrevious>Back</button>
 						<button *ngIf='last' class="button full-width" (click)="stepper.reset()">Reset</button>
-						<button *ngIf='!last' class="button full-width" (click)="checkFormValidity()" matStepperNext>Next</button>
+						<button *ngIf='!last' class="button full-width" (click)="checkFormValidity(index)" matStepperNext>Next</button>
 						<button *ngIf='last' class="button full-width" (click)="submitCallBack()">Submit</button>
 					</div>
 				</form>

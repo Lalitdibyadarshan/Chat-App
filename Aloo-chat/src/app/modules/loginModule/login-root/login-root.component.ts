@@ -15,7 +15,6 @@ export class LoginRootComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
 		this.router.navigate(['login'], { relativeTo: this.route });
 	}
 }

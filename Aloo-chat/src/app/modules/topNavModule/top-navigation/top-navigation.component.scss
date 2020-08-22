@@ -1,0 +1,36 @@
+.top-nav {
+	position: fixed;
+	z-index: 999;
+	display: flex;
+	justify-content: space-between;
+	top: 0;
+	padding-right: 0;
+
+	&--options {
+		display: flex;
+		height: 100%;
+
+		.items {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 1em;
+
+			.theme-btn {
+				background: transparent;
+				border: none;
+				cursor: pointer;
+
+				&:hover {
+					-webkit-box-shadow: 10px 10px 65px -36px rgba(0, 0, 0, 0.75);
+					-moz-box-shadow: 10px 10px 65px -36px rgba(0, 0, 0, 0.75);
+					box-shadow: 10px 10px 65px -36px rgba(0, 0, 0, 0.75);
+				}
+			}
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+	}
+}

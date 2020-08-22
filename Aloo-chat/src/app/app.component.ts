@@ -9,7 +9,7 @@ import { ThemeTypeEnum } from './modules/sharedModule/enums/theme-type.enum';
 })
 export class AppComponent implements OnInit {
 	title = 'Aloo-chat';
-	theme;
+	theme: string;
 
 	constructor(private themeService: ThemeService) {}
 
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 		});
 	}
 
-	changeTheme(theme: ThemeTypeEnum|string) {
+	changeTheme(theme: string) {
 		this.themeService.theme.next(theme);
 	}
 }

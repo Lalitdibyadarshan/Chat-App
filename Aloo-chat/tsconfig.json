@@ -19,7 +19,7 @@
       "dom"
 	],
 	"paths": {
-		"@styles": ["src/app/styles"]
+		"@shared": ["src/app/modules/sharedModule"]
 	}
   },
   "angularCompilerOptions": {
