@@ -1,0 +1,16 @@
+.chat-input {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 0em 1em;
+
+	&--text-field {
+		flex: 15;
+		margin-top: 1.5em;
+		padding-right: 1em;
+	}
+
+	&--button {
+		flex: 1;
+	}
+}

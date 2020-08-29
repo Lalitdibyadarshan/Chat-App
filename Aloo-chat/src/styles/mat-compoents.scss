@@ -7,22 +7,6 @@
 	$background: map-get($theme, background);
 	$foreground: map-get($theme, foreground);
 
-	.login {
-		&--container {
-			&__left-panel {
-				background-color: map-get($background, card);
-			}
-
-			&__right-panel {
-				background-color: map-get($background, background);
-			}
-		}
-
-		&--form-wrapper {
-			background-color: map-get($background, card);
-		}
-	}
-
 	.mat-icon {
 		color: map-get($foreground, text) !important;
 	}
@@ -34,25 +18,33 @@
 	.success {
 		color: greenyellow;
 	}
+	.stepper--horizontal {
+		.mat-stepper-horizontal {
+			background-color: transparent;
+		}
+	}
 
 	.stepper--vertical {
+		.mat-stepper-vertical {
+			background-color: transparent;
+		}
+
 		.mat-stepper-vertical-line::before {
-			@include media('<tablet') {
-				left: -21px
+			@include media("<tablet") {
+				left: -21px;
 			}
 		}
 
-		.mat-vertical-stepper-header  {
-			@include media('<tablet') {
+		.mat-vertical-stepper-header {
+			@include media("<tablet") {
 				padding-left: 5px !important;
 			}
 		}
 
 		.mat-vertical-content {
-			@include media('<tablet') {
+			@include media("<tablet") {
 				padding: 0 0 24px;
 			}
 		}
 	}
-
 }

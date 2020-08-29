@@ -1,0 +1,25 @@
+.chat-body {
+	overflow-y: auto;
+	height: 100%;
+	padding: 1em;
+
+
+	.message {
+		margin-bottom: 1em;
+
+		&--body {
+			width: calc(100% - 1rem);
+			height: max-content;
+			margin-left: 1rem;
+			padding: 1em;
+			background-color: gray;
+			border-radius: 0px 20px 20px 20px;
+		}
+
+		&--time {
+			margin-left: 1rem;
+			margin-top: 0.5em;
+			color: lighten(gray, 10%);
+		}
+	}
+}

@@ -1,4 +1,16 @@
-h1 {
-	margin-top: 2em;
-	color: red;
+.chat-root {
+	display: flex;
+	width: 100vw;
+	margin-top: 4rem;
+	height: calc(100vh - 4rem);
+	overflow: hidden;
+
+	&--left-panel {
+		width: 30%;
+		overflow: hidden;
+	}
+
+	&--right-panel {
+		width: 70%;
+	}
 }

@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, OnInit, HostListener } from '@angular/core';
+import { Directive, Input, ElementRef, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { ImagePathEnum } from '../enums/image-path.enum';
 
 @Directive({

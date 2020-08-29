@@ -1,16 +1,19 @@
-<mat-toolbar color="primary" class="top-nav">
-	<span>{{title}}</span>
-	<div class='top-nav--options'>
-		<div class="items">
-			<button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme" class='theme-btn'><mat-icon>format_color_fill</mat-icon></button>
-			<mat-menu #menu="matMenu">
-				<ng-container *ngFor='let theme of themes'>
-					<button mat-menu-item (click)="changeTheme(theme)" [ngClass]="isActiveTheme(theme) ? 'active' : ''">{{getThemeName(theme)}}</button>
-				</ng-container>
-			</mat-menu>
+<div>
+	<mat-toolbar color="primary" class="top-nav" >
+		<span>{{title}}</span>
+		<div class='top-nav--options'>
+			<div class="items">
+				<button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme" class='theme-btn'><mat-icon>format_color_fill</mat-icon></button>
+				<mat-menu #menu="matMenu">
+					<ng-container *ngFor='let theme of themes'>
+						<button mat-menu-item (click)="changeTheme(theme)" [ngClass]="isActiveTheme(theme) ? 'active' : ''">{{getThemeName(theme)}}</button>
+					</ng-container>
+				</mat-menu>
+			</div>
+			<a class="items" [routerLink]="['/chat']" routerLinkActive="active" >Chat box</a>
+			<a class="items" [routerLink]="['/auth']" routerLinkActive="active">Log in</a>
 		</div>
-		<a class="items" [routerLink]="['/chat']" routerLinkActive="active" >Chat box</a>
-		<a class="items" [routerLink]="['/auth']" routerLinkActive="active">Log in</a>
-	</div>
 
-</mat-toolbar>
+	</mat-toolbar>
+</div>
+

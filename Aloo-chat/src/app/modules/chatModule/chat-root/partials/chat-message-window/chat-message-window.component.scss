@@ -1,0 +1,20 @@
+.chat-message-window {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&--title {
+		height: 10%;
+		display: flex;
+		border-bottom: 1px solid white;
+	}
+
+	&--body {
+		height: 75%;
+		border-bottom: 1px solid white;
+	}
+
+	&--input {
+		height: 15%;
+	}
+}

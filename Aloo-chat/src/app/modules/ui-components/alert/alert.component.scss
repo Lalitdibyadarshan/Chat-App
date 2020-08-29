@@ -1,0 +1,33 @@
+.alert {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: max-content;
+    height: 4em;
+    border-radius: 5px;
+    z-index: 999;
+    left: 50%;
+    bottom: 2%;
+    transform: translateX(-40%);
+    text-align: center;
+}
+
+.alert--success {
+	background-color: rgb(163, 231, 146);
+	span {
+		color: green !important;
+	}
+}
+
+.alert--error {
+	background-color: rgb(240, 164, 120);
+	span {
+		color: red !important;
+	}
+}
+
+.animation {
+	height: 30px;
+	width: 30px;
+	margin-right: 1em;
+}

@@ -1,0 +1,9 @@
+<div class="chat-input" #chatInput>
+	<app-input class="chat-input--text-field"
+		[outlineAppearance]='false'
+		[parentForm]="formGroup"
+		placeHolder="Enter your message"
+		[controlName]="controlName"
+		[labelName]="'Enter you message'" ></app-input>
+	<button class="chat-input--button button" (click)="sendMessage()">Send</button>
+</div>

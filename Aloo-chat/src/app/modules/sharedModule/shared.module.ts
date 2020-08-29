@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { NgxsModule } from '@ngxs/store';
 import { ImageSrcDirective } from './directives/image-src.directive';
 import { CommonModule } from '@angular/common';
 import { PreventDefaultDirective } from './directives/prevent-default.directive';
+import { AuthState } from './store/states/auth-state';
 
 @NgModule({
 	declarations: [
@@ -11,11 +11,8 @@ import { PreventDefaultDirective } from './directives/prevent-default.directive'
 		PreventDefaultDirective
 	],
 	imports: [
-		NgxsModule.forRoot([
-
-		], {
-			developmentMode: !environment.production
-		}),
+		NgxsModule.forFeature([
+		]),
 		CommonModule
 	],
 	exports: [

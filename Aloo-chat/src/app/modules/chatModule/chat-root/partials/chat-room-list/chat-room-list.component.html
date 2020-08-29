@@ -1,0 +1,7 @@
+<div class="chat-room background-card hide-scroll-bar">
+	<div class="chat-room--list background-card--hover"
+		[ngClass]="isCurrentUser(user) ? 'background-card--selected' : ''" (click)="setSelectedUser(user)"
+		*ngFor="let user of userdata">
+		<p [ngClass]="user.isActive? 'status--online' : 'status--offline'">{{user.firstName}} {{user.lastName}}</p>
+	</div>
+</div>

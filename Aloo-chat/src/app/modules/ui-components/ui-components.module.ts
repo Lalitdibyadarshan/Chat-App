@@ -16,7 +16,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { StepperMobileComponent } from './stepper-mobile/stepper-mobile.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { SharedModule } from '../sharedModule/shared.module';
-
+import { AlertComponent } from './alert/alert.component';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+import { AnimationComponent } from './animation/animation.component';
 @NgModule({
 	declarations: [
 		ProgressBarComponent,
@@ -26,7 +29,9 @@ import { SharedModule } from '../sharedModule/shared.module';
 		InputComponent,
 		StepperComponent,
 		StepperMobileComponent,
-		DatePickerComponent
+		DatePickerComponent,
+		AlertComponent,
+		AnimationComponent
 	],
 	imports: [
 		CommonModule,
@@ -37,7 +42,9 @@ import { SharedModule } from '../sharedModule/shared.module';
 		MatButtonModule,
 		MatMomentDateModule,
 		MatDatepickerModule,
-		SharedModule
+		SharedModule,
+		LottieModule.forRoot({ player: () => player }),
+
 	],
 	exports: [
 		ProgressBarComponent,
@@ -46,7 +53,9 @@ import { SharedModule } from '../sharedModule/shared.module';
 		InputComponent,
 		StepperComponent,
 		StepperMobileComponent,
-		DatePickerComponent
+		DatePickerComponent,
+		AlertComponent,
+		AnimationComponent
 	],
 	providers: []
 })

@@ -16,10 +16,14 @@ export class InputComponent implements OnInit {
 	@Input() maxLength?: number;
 	@Input() minLength?: number;
 	@Input() pattern?: string;
+	@Input() outlineAppearance = true;
+	@Input() placeHolder = this.labelName;
 
+	appearance: string;
 	formControl: FormControl;
 
 	ngOnInit() {
+		this.appearance = this.outlineAppearance ? 'outline' : '';
 		this.addFormControl();
 	}
 

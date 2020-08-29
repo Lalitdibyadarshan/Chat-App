@@ -1,13 +1,12 @@
 <div class="d-flex login--container">
-	<div class="login--container__left-panel">
-		<img [src]="doodles" [doodle]= 'true' class="login--doodle animation--floating" alt="">
+	<div class="login--container__left-panel background-card">
+		<img [src]="doodles" [doodle]= 'true' class="login--doodle animation--floating" alt="login doodle">
 	</div>
-	<div class="login--container__right-panel">
-			<div class="login--form-wrapper text-center shadow">
+	<div class="login--container__right-panel background-primary">
+			<div class="login--form-wrapper text-center ">
 				<div class="form">
 					<router-outlet></router-outlet>
 				</div>
 			</div>
 	</div>
-
 </div>

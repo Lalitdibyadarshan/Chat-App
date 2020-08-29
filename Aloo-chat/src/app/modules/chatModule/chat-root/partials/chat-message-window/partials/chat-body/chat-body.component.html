@@ -1,0 +1,10 @@
+<div class="chat-body background-primary">
+	<div class="message" *ngFor="let message of selectedUser.messages">
+		<p>{{selectedUser.firstName}}</p>
+		<div class="message--body">
+			<p>{{message.message}}</p>
+		</div>
+		<p class="message--time">{{message.createdAt | date: 'medium'}}</p>
+	</div>
+</div>
+

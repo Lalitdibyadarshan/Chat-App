@@ -1,0 +1,12 @@
+<ng-container [ngSwitch]="currentAlert?.alertType">
+	<div *ngSwitchCase="alertType.SUCCESS" class="alert alert--success shadow">
+		<app-animation [animationDataPath]="successAnimationPath"
+			[isInfiniteLoop]="false" [slowDown]="true"class="animation"></app-animation>
+		<span>{{currentAlert.text}}</span>
+	</div>
+	<div *ngSwitchCase="alertType.ERROR" class="alert alert--error shadow">
+		<app-animation [animationDataPath]="errorAnimationPath"
+			[isInfiniteLoop]="false" [slowDown]="true" class="animation"></app-animation>
+		<span>{{currentAlert.text}}</span>
+	</div>
+</ng-container>

@@ -4,19 +4,24 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './modules/sharedModule/shared.module';
 import { UiComponentsModule } from './modules/ui-components/ui-components.module';
 import { TopNavModule } from './modules/topNavModule/top-nav.module';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
 	declarations: [
 		AppComponent
 	],
 	imports: [
+		NgxsModule.forRoot([], {
+			developmentMode: !environment.production
+		}),
 		BrowserModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
-		TopNavModule
+		TopNavModule,
+		UiComponentsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
