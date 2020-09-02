@@ -3,6 +3,7 @@ import { Select } from '@ngxs/store';
 import { ChatState } from '../../store/chat.state';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/modules/apiModule/fireBaseService/models/user.model';
+import { BaseClass } from 'src/app/modules/sharedModule/base';
 
 @Component({
 	selector: 'app-chat-message-window',
@@ -11,13 +12,14 @@ import { User } from 'src/app/modules/apiModule/fireBaseService/models/user.mode
 		'./chat-message-window.component.scss'
 	]
 })
-export class ChatMessageWindowComponent implements OnInit {
-	@Select(ChatState.SelectedUser) selectedUser$: Observable<User>;
+export class ChatMessageWindowComponent extends BaseClass implements OnInit {
+	@Select(ChatState.selectedUser) selectedUser$: Observable<User>;
 	selectedUser: User;
 
 	ngOnInit() {
-		this.selectedUser$.subscribe(user => {
-			this.selectedUser = user;
-		});
+		this.obsGC(this.selectedUser$)
+			.subscribe(user => {
+				this.selectedUser = user;
+			});
 	}
 }

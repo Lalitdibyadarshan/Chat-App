@@ -1,0 +1,16 @@
+@import "../../../../../../../styles/include-media.scss";
+.submit {
+	display: flex;
+	justify-content: space-around;
+
+	@include media('<tablet') {
+		flex-direction: column;
+	}
+
+	.message {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}

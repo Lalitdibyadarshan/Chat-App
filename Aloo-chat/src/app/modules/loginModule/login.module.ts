@@ -6,7 +6,7 @@ import { SignUpComponent } from './views/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UiComponentsModule } from '../ui-components/ui-components.module';
 import { PersonalDetailsComponent } from './views/signup/views/personal-details/personal-details.component';
-import { AddressComponent } from './views/signup/views/address/address.component';
+import { SubmitComponent } from './views/signup/views/submit/submit.component';
 import { ContactDetailsComponent } from './views/signup/views/contact-details/contact-details.component';
 import { PasswordComponent } from './views/signup/views/password/password.component';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,7 @@ import { SharedModule } from '../sharedModule/shared.module';
 		LoginComponent,
 		SignUpComponent,
 		PersonalDetailsComponent,
-		AddressComponent,
+		SubmitComponent,
 		ContactDetailsComponent,
 		PasswordComponent
 	],

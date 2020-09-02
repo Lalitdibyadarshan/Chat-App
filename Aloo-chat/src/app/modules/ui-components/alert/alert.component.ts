@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../sharedModule/services/alert.service';
-import { Alert } from '../../sharedModule/models/Alert.model';
+import { Alert } from '../../sharedModule/models/alert.model';
 import { AlertType } from '../../sharedModule/enums/alert-type.enum';
+import { BaseClass } from '../../sharedModule/base';
 
 @Component({
 	selector: 'app-alert',
@@ -10,17 +11,19 @@ import { AlertType } from '../../sharedModule/enums/alert-type.enum';
 		'./alert.component.scss'
 	]
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent extends BaseClass implements OnInit {
 
 	currentAlert: Alert;
 	alertType = AlertType;
 	successAnimationPath = '/assets/lottie-animations/success.json';
 	errorAnimationPath = '/assets/lottie-animations/error.json';
 
-	constructor(private alertService: AlertService) { }
+	constructor(private alertService: AlertService) {
+		super();
+	 }
 
 	ngOnInit() {
-		this.alertService.getAlerts().subscribe(alerts => {
+		this.obsGC(this.alertService.getAlerts()).subscribe(alerts => {
 			this.renderAlert(alerts);
 		});
 	}
@@ -36,6 +39,6 @@ export class AlertComponent implements OnInit {
 				this.alertService.resetAlerts();
 				clearInterval(timer);
 			}
-		}, 5000);
+		}, 7000);
 	}
 }

@@ -11,7 +11,6 @@ export class UsersMapper implements MapperInterface<RawUsersInterface[], User[]>
 		const users = rawUsers.map(rawUser => {
 			return new User(rawUser);
 		});
-
 		return users;
 	}
 }

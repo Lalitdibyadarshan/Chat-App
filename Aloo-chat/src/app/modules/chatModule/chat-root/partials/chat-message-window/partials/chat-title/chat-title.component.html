@@ -1,6 +1,6 @@
-<div class="chat-title background-primary">
-	<img [src]="selectedUser.picture" [alt]="selectedUser.firstName" class="chat-title--image">
-	<span [ngClass]="selectedUser.isActive? 'status--online' : 'status--offline'" class="chat-title--name">
-		{{selectedUser.firstName}} {{selectedUser.lastName}}
+<div class="chat-title background-primary shadow">
+	<img [src]="selectedUser?.picture" [alt]="selectedUser?.firstName" class="chat-title--image">
+	<span [ngClass]="selectedUser?.isActive? 'status--online' : 'status--offline'" class="chat-title--name">
+		{{selectedUser?.firstName}} {{selectedUser?.lastName}}
 	</span>
 </div>

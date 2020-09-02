@@ -18,7 +18,7 @@ export interface ChatStateModel {
 export class ChatState {
 
 	@Selector()
-	static SelectedUser(state: ChatStateModel): User {
+	static selectedUser(state: ChatStateModel): User {
 	  return state.selectedUser;
 	}
 

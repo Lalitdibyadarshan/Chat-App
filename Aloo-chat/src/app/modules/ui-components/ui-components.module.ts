@@ -1,4 +1,4 @@
-import { NgModule, Input } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +20,7 @@ import { AlertComponent } from './alert/alert.component';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { AnimationComponent } from './animation/animation.component';
+import { ProgressBarLoaderComponent } from './progress-bar-loader/progress-bar-loader.component';
 @NgModule({
 	declarations: [
 		ProgressBarComponent,
@@ -31,7 +32,8 @@ import { AnimationComponent } from './animation/animation.component';
 		StepperMobileComponent,
 		DatePickerComponent,
 		AlertComponent,
-		AnimationComponent
+		AnimationComponent,
+		ProgressBarLoaderComponent
 	],
 	imports: [
 		CommonModule,
@@ -44,7 +46,6 @@ import { AnimationComponent } from './animation/animation.component';
 		MatDatepickerModule,
 		SharedModule,
 		LottieModule.forRoot({ player: () => player }),
-
 	],
 	exports: [
 		ProgressBarComponent,
@@ -55,7 +56,8 @@ import { AnimationComponent } from './animation/animation.component';
 		StepperMobileComponent,
 		DatePickerComponent,
 		AlertComponent,
-		AnimationComponent
+		AnimationComponent,
+		ProgressBarLoaderComponent
 	],
 	providers: []
 })

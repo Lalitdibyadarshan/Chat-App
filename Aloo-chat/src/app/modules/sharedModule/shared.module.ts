@@ -12,6 +12,7 @@ import { AuthState } from './store/states/auth-state';
 	],
 	imports: [
 		NgxsModule.forFeature([
+			AuthState
 		]),
 		CommonModule
 	],

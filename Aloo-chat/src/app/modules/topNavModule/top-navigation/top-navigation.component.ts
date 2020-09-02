@@ -22,7 +22,7 @@ export class TopNavigationComponent implements OnInit {
 
 	changeTheme(theme: string) {
 		this.currentTheme = theme;
-		this.theming.theme.next(theme);
+		this.theming.theme$.next(theme);
 	}
 
 	isActiveTheme(theme: string): boolean {

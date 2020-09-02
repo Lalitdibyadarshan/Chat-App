@@ -6,7 +6,7 @@
 			<app-personal-details class='step1' [parentForm]="signUpForms[0]"></app-personal-details>
 			<app-contact-details class='step2' [parentForm]="signUpForms[1]"></app-contact-details>
 			<app-password class="step3" [parentForm]="signUpForms[2]"></app-password>
-			<h1 class="step4">Step 4</h1>
+			<app-signup-submit class="step4"></app-signup-submit>
 		</app-stepper>
 	</div>
 
@@ -15,7 +15,7 @@
 			<app-personal-details class='step1' [parentForm]="signUpForms[0]"></app-personal-details>
 			<app-contact-details class='step2' [parentForm]="signUpForms[1]"></app-contact-details>
 			<app-password class="step3" [parentForm]="signUpForms[2]"></app-password>
-			<h1 class="step4">Step 4</h1>
+			<app-signup-submit class="step4"></app-signup-submit>
 		</app-stepper-mobile>
 	</div>
 	<small><a [routerLink]="'/auth/login'" class="link">Already have an account? Please login</a></small>

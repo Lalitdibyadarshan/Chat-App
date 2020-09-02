@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 	]
 })
 export class ChatRoomListComponent implements OnInit {
-	@Select(ChatState.SelectedUser) selectedUser$: Observable<User>;
+	@Select(ChatState.selectedUser) selectedUser$: Observable<User>;
 	@Input() userdata: User[];
 
 	selectedUser: User;

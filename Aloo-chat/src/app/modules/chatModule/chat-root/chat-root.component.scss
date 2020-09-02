@@ -1,3 +1,5 @@
+@import "../../../../styles/include-media.scss";
+
 .chat-root {
 	display: flex;
 	width: 100vw;
@@ -5,12 +7,25 @@
 	height: calc(100vh - 4rem);
 	overflow: hidden;
 
+	@include media('<tablet') {
+		margin-top: 3.5rem;
+	}
+
 	&--left-panel {
 		width: 30%;
 		overflow: hidden;
+		z-index: 3;
+
+		@include media('<tablet') {
+			display: none;
+		}
 	}
 
 	&--right-panel {
 		width: 70%;
+
+		@include media('<tablet') {
+			width: 100%;
+		}
 	}
 }

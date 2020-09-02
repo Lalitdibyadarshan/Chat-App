@@ -1,5 +1,5 @@
 <div class="chat-body background-primary">
-	<div class="message" *ngFor="let message of selectedUser.messages">
+	<div class="message" *ngFor="let message of selectedUser?.messages">
 		<p>{{selectedUser.firstName}}</p>
 		<div class="message--body">
 			<p>{{message.message}}</p>
