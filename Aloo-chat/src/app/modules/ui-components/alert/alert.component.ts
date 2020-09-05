@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { AlertService } from '../../sharedModule/services/alert.service';
 import { Alert } from '../../sharedModule/models/alert.model';
 import { AlertType } from '../../sharedModule/enums/alert-type.enum';
@@ -18,7 +18,7 @@ export class AlertComponent extends BaseClass implements OnInit {
 	successAnimationPath = '/assets/lottie-animations/success.json';
 	errorAnimationPath = '/assets/lottie-animations/error.json';
 
-	constructor(private alertService: AlertService) {
+	constructor(private alertService: AlertService, private ngZone: NgZone) {
 		super();
 	 }
 
@@ -37,8 +37,9 @@ export class AlertComponent extends BaseClass implements OnInit {
 				this.currentAlert = alerts.pop();
 			} else {
 				this.alertService.resetAlerts();
+				this.ngZone.run(() => this.currentAlert);
 				clearInterval(timer);
 			}
-		}, 7000);
+		}, 5000);
 	}
 }

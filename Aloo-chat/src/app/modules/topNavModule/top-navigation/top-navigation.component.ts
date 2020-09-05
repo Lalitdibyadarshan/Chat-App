@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ThemeService } from '../../sharedModule/services/theme.service';
 import { ThemeTypeEnum } from '../../sharedModule/enums/theme-type.enum';
+import { Select } from '@ngxs/store';
+import { AuthState } from '../../sharedModule/store/states/auth-state';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../apiModule/authService/auth.service';
 
 @Component({
 	selector: 'app-top-nav',
@@ -9,11 +13,15 @@ import { ThemeTypeEnum } from '../../sharedModule/enums/theme-type.enum';
 })
 export class TopNavigationComponent implements OnInit {
 	@Input() title: string;
+	@Select(AuthState.isLoggedIn) isLoggedInUser$: Observable<boolean>;
+
 	themes: string[];
 	currentTheme: string;
+	isloggedinUSer: boolean;
 
 	constructor(
-		private theming: ThemeService
+		private theming: ThemeService,
+		private authService: AuthService
 	) { }
 
 	ngOnInit() {
@@ -31,5 +39,9 @@ export class TopNavigationComponent implements OnInit {
 
 	getThemeName(name: string): string {
 		return name.replace('-theme', '').toLowerCase();
+	}
+
+	logout(): void {
+		this.authService.logout();
 	}
 }

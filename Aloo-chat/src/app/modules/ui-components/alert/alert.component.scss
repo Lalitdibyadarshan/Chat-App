@@ -26,6 +26,13 @@
 	}
 }
 
+.alert--warning {
+	background-color: rgb(240, 222, 120);
+	span {
+		color: rgb(158, 136, 39) !important;
+	}
+}
+
 .animation {
 	height: 30px;
 	width: 30px;

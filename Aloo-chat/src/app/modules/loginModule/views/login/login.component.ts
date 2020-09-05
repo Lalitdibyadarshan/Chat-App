@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertService } from 'src/app/modules/sharedModule/services/alert.service';
-import { Alert } from 'src/app/modules/sharedModule/models/alert.model';
-import { AlertType } from 'src/app/modules/sharedModule/enums/alert-type.enum';
-import { LoaderService } from 'src/app/modules/sharedModule/services/loader.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoginModel } from 'src/app/modules/apiModule/authService/models/login.model';
+import { AuthService } from 'src/app/modules/apiModule/authService/auth.service';
 
 @Component({
 	selector: 'app-login',
@@ -12,12 +11,19 @@ import { LoaderService } from 'src/app/modules/sharedModule/services/loader.serv
 })
 export class LoginComponent implements OnInit {
 	loginForm: FormGroup;
+	returnUrl: string;
 
-	constructor(private fb: FormBuilder, private alertService: AlertService, private loaderService: LoaderService) {
+	constructor(
+		private fb: FormBuilder,
+		private router: Router,
+		private route: ActivatedRoute,
+		private authService: AuthService
+	) {
 		this.createForm();
 	}
 
 	ngOnInit() {
+		this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/chat';
 	}
 
 	private createForm() {
@@ -25,17 +31,11 @@ export class LoginComponent implements OnInit {
 	}
 
 	submit(): void {
-		// TODO auth call
-		this.loaderService.setLoader(true);
 		if (this.loginForm.valid) {
 			const { email, password } = this.loginForm.value;
-			console.log(`Email: ${email}, Password: ${password}`);
-		} else {
-			setTimeout(() => {
-				this.loaderService.setLoader(false);
-				this.alertService.addAlert(new Alert('Something went wrong', AlertType.ERROR));
-			}, 3000);
+			this.authService.login(new LoginModel(email, password)).subscribe(() => {
+				this.router.navigateByUrl(this.returnUrl);
+			});
 		}
 	}
-
 }

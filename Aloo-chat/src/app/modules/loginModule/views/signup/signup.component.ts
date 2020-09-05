@@ -2,7 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SignupStepEnum } from './enums/step.enum';
 import { SignupConstant } from './constants/signup.constant';
-import { FormControlEnum } from './enums/form-control.enum';
+import { SignUpPayload } from 'src/app/modules/apiModule/authService/models/signUpPayload';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/modules/apiModule/authService/auth.service';
 
 @Component({
 	selector: 'app-signup',
@@ -18,8 +20,12 @@ export class SignUpComponent implements OnInit {
 	currentStep: SignupStepEnum;
 
 	mobile = false;
-	constructor(private fb: FormBuilder, @Inject('Window') private window: Window) {
-	}
+	constructor(
+		private fb: FormBuilder,
+		@Inject('Window') private window: Window,
+		private router: Router,
+		private authService: AuthService
+	) {}
 
 	ngOnInit() {
 		this.createForm();
@@ -35,14 +41,18 @@ export class SignUpComponent implements OnInit {
 	}
 
 	submit(): void {
-		// TODO auth call
-		const { firstName, lastName } = this.signUpForms[0].value;
-		const { email, phoneNumber } = this.signUpForms[1].value;
-		const { newPassword } = this.signUpForms[2].value;
-		console.log(`name: ${firstName} ${lastName}
-		email: ${email}
-		phone: ${phoneNumber}
-		password: ${newPassword}`);
+		const invalidForm = this.signUpForms.filter(form => form.invalid);
+		// TODO add lodash
+		if (invalidForm.length === 0) {
+			const { firstName, lastName } = this.signUpForms[0].value;
+			const { email, phoneNumber } = this.signUpForms[1].value;
+			const { newPassword } = this.signUpForms[2].value;
+
+			this.authService.signup(new SignUpPayload(firstName, lastName, email, newPassword, phoneNumber))
+				.subscribe(() => {
+					this.router.navigateByUrl('/chat');
+				});
+		}
 	}
 
 	getCallback() {
