@@ -1,7 +1,7 @@
 import { RawMessageInterface } from './raw-message.inteface';
 
 export class RawUsersInterface {
-	userId: string;
+	id: string;
 	firstName: string;
 	lastName: string;
 	picture: string;

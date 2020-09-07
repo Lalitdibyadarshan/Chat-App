@@ -11,7 +11,11 @@ export class LoaderService {
 		return this.showLoader$;
 	}
 
-	setLoader(status: boolean): void {
-		this.showLoader$.next(status);
+	showLoader(): void {
+		this.showLoader$.next(true);
+	}
+
+	hideLoader(): void {
+		this.showLoader$.next(false);
 	}
 }

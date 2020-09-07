@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FirebaseService } from 'src/app/modules/apiModule/fireBaseService/fire-base.service';
 import { User } from 'src/app/modules/apiModule/fireBaseService/models/user.model';
 import { Store, Select } from '@ngxs/store';
 import { SetCurrentUserAction } from '../../store/chat.action';
 import { ChatState } from '../../store/chat.state';
 import { Observable } from 'rxjs';
+import { BaseClass } from 'src/app/modules/sharedModule/base';
 
 @Component({
 	selector: 'app-chat-room-list',
@@ -13,21 +14,31 @@ import { Observable } from 'rxjs';
 		'./chat-room-list.component.scss'
 	]
 })
-export class ChatRoomListComponent implements OnInit {
+export class ChatRoomListComponent extends BaseClass implements OnInit, OnChanges {
 	@Select(ChatState.selectedUser) selectedUser$: Observable<User>;
 	@Input() userdata: User[];
 
 	selectedUser: User;
 
-	constructor(private store: Store) { }
+	constructor(private store: Store) {
+		super();
+	}
 
 	ngOnInit(): void {
-		this.setSelectedUser(this.userdata[0]);
+		if (this.userdata) {
+			this.setSelectedUser(this.userdata[0]);
+		}
 		this.getSelectedUser();
 	}
 
+	ngOnChanges(): void {
+		if (this.userdata) {
+			this.setSelectedUser(this.userdata[0]);
+		}
+	}
+
 	getSelectedUser(): void {
-		this.selectedUser$
+		this.obsGC(this.selectedUser$)
 			.subscribe(user => {
 				this.selectedUser = user;
 			});
@@ -38,6 +49,6 @@ export class ChatRoomListComponent implements OnInit {
 	}
 
 	isCurrentUser(user: User): boolean {
-		return this.selectedUser && user.userId === this.selectedUser.userId;
+		return this.selectedUser && user.id === this.selectedUser.id;
 	}
 }

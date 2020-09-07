@@ -1,10 +1,6 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, ChangeDetectionStrategy } from '@angular/core';
 import { ThemeService } from './modules/sharedModule/services/theme.service';
 import { BaseClass } from './modules/sharedModule/base';
-import { LoaderService } from './modules/sharedModule/services/loader.service';
-import { Observable } from 'rxjs';
-import { Store } from '@ngxs/store';
-import { InitializeExistingSessionAction } from './modules/sharedModule/store/actions/auth-action';
 import { AuthService } from './modules/apiModule/authService/auth.service';
 
 @Component({
@@ -15,22 +11,19 @@ import { AuthService } from './modules/apiModule/authService/auth.service';
 export class AppComponent extends BaseClass implements OnInit {
 	title = 'Friday';
 	theme: string;
+	initializeApp = false;
 
 	constructor(
 		private themeService: ThemeService,
 		private renderer: Renderer2,
-		private loaderService: LoaderService,
 		private authService: AuthService) {
 		super();
 	}
 
 	ngOnInit() {
 		this.getTheme();
-		this.authService.initializeExistingSession();
-	}
-
-	getLoader(): Observable<boolean> {
-		return this.obsGC(this.loaderService.getLoader());
+		this.authService.initializeExistingSession()
+			.subscribe(() => this.initializeApp = true);
 	}
 
 	private getTheme(): void {

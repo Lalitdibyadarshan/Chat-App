@@ -15,6 +15,9 @@ export class ChatRootComponent implements OnInit {
 	constructor(private firebaseService: FirebaseService) {}
 
 	ngOnInit() {
-		this.userData = this.firebaseService.getAllChat();
+		this.firebaseService.getAllUsers().subscribe(users => {
+			console.log(users)
+			this.userData = users;
+		});
 	}
 }

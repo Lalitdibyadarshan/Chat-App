@@ -35,6 +35,7 @@ export class AuthState {
 			loggedInUser: action.userDetails,
 			isloggedIn: true
 		});
+		console.log(action.userDetails)
 	}
 
 	@Action(SignOutAction)
@@ -51,5 +52,6 @@ export class AuthState {
 			loggedInUser: action.existingSessionDetails,
 			isloggedIn: true
 		});
+		console.log(action.existingSessionDetails)
 	}
 }

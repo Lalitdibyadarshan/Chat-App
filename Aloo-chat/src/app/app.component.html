@@ -1,6 +1,9 @@
-<div class="root">
-	<app-top-nav [title]='title'></app-top-nav>
-	<app-progress-bar-loader *ngIf="getLoader()|async"></app-progress-bar-loader>
-	<app-alert></app-alert>
-	<router-outlet></router-outlet>
-</div>
+<ng-container *ngIf="initializeApp">
+	<div class="root">
+		<app-top-nav [title]='title'></app-top-nav>
+		<router-outlet></router-outlet>
+	</div>
+</ng-container>
+<app-progress-bar-loader></app-progress-bar-loader>
+<app-alert></app-alert>
+

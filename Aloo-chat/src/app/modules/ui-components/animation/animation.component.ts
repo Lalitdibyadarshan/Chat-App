@@ -7,7 +7,7 @@ import { AnimationOptions } from 'ngx-lottie';
 	template: `
 		<ng-lottie
 			[options]="options"
-			(loopComplete)="loopComplete($event)"
+			(loopComplete)="loopComplete()"
 			(animationCreated)="animationCreated($event)">
 		</ng-lottie>
 	`

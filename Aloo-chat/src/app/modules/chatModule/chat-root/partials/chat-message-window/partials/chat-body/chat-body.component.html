@@ -1,10 +1,19 @@
 <div class="chat-body background-primary">
-	<div class="message" *ngFor="let message of selectedUser?.messages">
-		<p>{{selectedUser.firstName}}</p>
-		<div class="message--body">
-			<p>{{message.message}}</p>
+	<ng-container *ngFor="let message of messages">
+		<div class="message-left" *ngIf="!isMessageByLoggedinUser(message)">
+			<p>{{fetchUsername(message.senderId)}}</p>
+			<div class="message-left--body-sender">
+				<p>{{message.message}}</p>
+			</div>
+			<p class="message-left--time">{{message['time'] | date: 'short'}}</p>
 		</div>
-		<p class="message--time">{{message.createdAt | date: 'medium'}}</p>
-	</div>
+		<div class="message-right" *ngIf="isMessageByLoggedinUser(message)">
+			<p>{{loggedInUser.firstName}}</p>
+			<div class="message-right--body-receiver">
+				<p>{{message.message}}</p>
+			</div>
+			<p class="message-right--time">{{message['time'] | date: 'short'}}</p>
+		</div>
+	</ng-container>
 </div>
 

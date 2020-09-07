@@ -1,6 +1,8 @@
+import { firestore } from 'firebase';
+
 export interface RawMessageInterface {
 	messageId: string;
 	message: string;
-	createdAt: Date;
+	createdAt: firestore.Timestamp;
 	senderId: string;
 }

@@ -14,29 +14,30 @@ import { Store } from '@ngxs/store';
 import { InitializeExistingSessionAction, SignUpAction, SignOutAction } from '../../sharedModule/store/actions/auth-action';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../sharedModule/services/loader.service';
+import { HttpService } from '../httpService/httpService';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class AuthService {
+export class AuthService extends HttpService {
 
 	constructor(
 		private fireAuth: AngularFireAuth,
 		private firestore: AngularFirestore,
-		private loaderService: LoaderService,
 		private alertService: AlertService,
 		private store: Store,
-		private router: Router
-	) { }
+		private router: Router,
+		loaderService: LoaderService
+	) {
+		super(loaderService);
+	 }
 
 	login(loginPayload: LoginModel): Observable<firebase.User> {
-		this.loaderService.setLoader(true);
-		return from(this.fireAuth.signInWithEmailAndPassword(loginPayload.email, loginPayload.password))
+		return this.showLoader(from(this.fireAuth.signInWithEmailAndPassword(loginPayload.email, loginPayload.password)))
 			.pipe(
 				map(user => {
-					this.loaderService.setLoader(false);
-					const userDetails = {} as UserDetails;
-					this.store.dispatch(new SignUpAction(userDetails));
+					this.fetchAndStoreUserById(user.user.uid);
+					sessionStorage.setItem('existingSession', 'true');
 					return user.user;
 				}),
 				catchError(err => {
@@ -47,11 +48,9 @@ export class AuthService {
 	}
 
 	signup(signUpPayload: SignUpPayload): Observable<UserDetails> {
-		this.loaderService.setLoader(true);
-		return from(this.fireAuth.createUserWithEmailAndPassword(signUpPayload.email, signUpPayload.password))
+		return this.showLoader(from(this.fireAuth.createUserWithEmailAndPassword(signUpPayload.email, signUpPayload.password)))
 			.pipe(
 				map(res => {
-					this.loaderService.setLoader(false);
 					const userRef: AngularFirestoreDocument<UserDetails> = this.firestore.doc(`users/${res.user.uid}`);
 					const updateUser: UserDetails = {
 						id: res.user.uid,
@@ -63,7 +62,8 @@ export class AuthService {
 					};
 					if (signUpPayload.mobileNumber) { updateUser.mobileNumber = signUpPayload.mobileNumber; }
 					userRef.set(updateUser);
-					this.store.dispatch(new SignUpAction(updateUser));
+					this.store.dispatch(new InitializeExistingSessionAction(updateUser));
+					sessionStorage.setItem('existingSession', 'true');
 					return updateUser;
 				}),
 				catchError(err => {
@@ -73,27 +73,29 @@ export class AuthService {
 			);
 	}
 
-	initializeExistingSession(): void {
-		this.fireAuth.authState
-			.pipe(take(1))
-			.subscribe(user => {
+	initializeExistingSession(): Observable<firebase.User> {
+		return this.showLoader(this.fireAuth.authState)
+			.pipe(take(1),
+			tap(user => {
 				if (user) {
-					this.firestore.doc<UserDetails>(`users/${user.uid}`)
-						.valueChanges()
-						.pipe(take(1))
-						.subscribe(userdetails => {
-							sessionStorage.setItem('existingSession', 'true');
-							this.store.dispatch(new InitializeExistingSessionAction(userdetails));
-							this.router.navigateByUrl('/chat');
-						});
+					this.fetchAndStoreUserById(user.uid);
 				}
+			}));
+	}
+
+	private fetchAndStoreUserById(id: string) {
+		this.showLoader(this.firestore.doc<UserDetails>(`users/${id}`)
+			.valueChanges())
+			.pipe(take(1))
+			.subscribe(userdetails => {
+				sessionStorage.setItem('existingSession', 'true');
+				this.store.dispatch(new InitializeExistingSessionAction(userdetails));
+				this.router.navigateByUrl('/chat');
 			});
 	}
 
 	logout() {
-		this.loaderService.setLoader(true);
-		this.fireAuth.signOut().then(() => {
-			this.loaderService.setLoader(false);
+		this.showLoader(from(this.fireAuth.signOut())).subscribe(() => {
 			this.store.dispatch(new SignOutAction());
 			this.router.navigateByUrl('/auth');
 			sessionStorage.removeItem('existingSession');

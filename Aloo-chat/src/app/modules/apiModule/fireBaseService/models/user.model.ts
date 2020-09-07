@@ -2,7 +2,7 @@ import { Message } from './message.model';
 import { RawUsersInterface } from '../interfaces/raw-users.interfce';
 
 export class User {
-	userId: string;
+	id: string;
 	firstName: string;
 	lastName: string;
 	picture: string;
@@ -14,7 +14,7 @@ export class User {
 	}
 
 	mapUser(rawUser: RawUsersInterface): void {
-		this.userId = rawUser.userId;
+		this.id = rawUser.id;
 		this.firstName = rawUser.firstName;
 		this.lastName = rawUser.lastName;
 		this.picture = rawUser.picture;
