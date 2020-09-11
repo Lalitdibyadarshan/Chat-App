@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { InputTypeEnum } from './enums/input-type.enum';
 import { ValidatorsConstant } from './constants/validators-enum';
 
 @Component({
 	selector: 'app-input',
-	templateUrl: './input.component.html'
+	templateUrl: './input.component.html',
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent implements OnInit {
 	@Input() parentForm: FormGroup;
@@ -18,6 +19,7 @@ export class InputComponent implements OnInit {
 	@Input() pattern?: string;
 	@Input() outlineAppearance = true;
 	@Input() placeHolder = this.labelName;
+	@Input() initialValue = '';
 
 	appearance: string;
 	formControl: FormControl;
@@ -28,7 +30,7 @@ export class InputComponent implements OnInit {
 	}
 
 	private addFormControl(): void {
-		this.formControl = new FormControl('');
+		this.formControl = new FormControl(this.initialValue);
 		this.parentForm.addControl(this.controlName, this.formControl);
 		this.formControl.setValidators(this.getValidators());
 	}

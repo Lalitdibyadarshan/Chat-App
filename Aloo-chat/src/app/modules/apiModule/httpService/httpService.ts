@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class HttpService {
 
-	constructor(private loaderService: LoaderService) {}
+	constructor(protected loaderService: LoaderService) {}
 
 	showLoader(obs: Observable<any>): Observable<any> {
 		this.loaderService.showLoader();

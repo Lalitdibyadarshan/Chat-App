@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		AngularFireDatabaseModule,
 		AngularFireAuthModule,
-		AngularFirestoreModule
+		AngularFirestoreModule,
+		AngularFireStorageModule
 	],
 	exports: [
 	],

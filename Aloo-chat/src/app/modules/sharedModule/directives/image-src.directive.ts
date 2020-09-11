@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, OnInit } from '@angular/core';
+import { Directive, Input, ElementRef, OnInit, HostListener } from '@angular/core';
 import { ImagePathEnum } from '../enums/image-path.enum';
 
 @Directive({
@@ -7,6 +7,9 @@ import { ImagePathEnum } from '../enums/image-path.enum';
   })
   export class ImageSrcDirective implements OnInit {
 	@Input() doodle = false;
+	@Input() fallbackImageURL: string;
+	@Input() override = false;
+
 	constructor(private el: ElementRef) {
 	}
 
@@ -14,8 +17,8 @@ import { ImagePathEnum } from '../enums/image-path.enum';
 		this.buildImagePath();
 	}
 
-	buildImagePath() {
-		if (this.el.nativeElement.tagName !== 'IMG') {
+	buildImagePath(): void {
+		if (this.el.nativeElement.tagName !== 'IMG' || this.override) {
 			return;
 		}
 
@@ -24,5 +27,10 @@ import { ImagePathEnum } from '../enums/image-path.enum';
 			const prefix = this.doodle ? ImagePathEnum.ILLUSTRATIONS : ImagePathEnum.IMAGES;
 			this.el.nativeElement.src = prefix + path;
 		});
+	}
+
+	@HostListener('error', ['$event'])
+	updateSourceUrl(): void {
+		this.el.nativeElement.src = this.fallbackImageURL;
 	}
   }

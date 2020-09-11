@@ -2,8 +2,8 @@ import { LoginModel } from 'src/app/modules/apiModule/authService/models/login.m
 import { SignUpPayload } from 'src/app/modules/apiModule/authService/models/signUpPayload';
 import { UserDetails } from 'src/app/modules/apiModule/authService/models/userDetails.model';
 
-export class SignUpAction {
-	static readonly type = '[Auth] signup action';
+export class UpdateProfileAction {
+	static readonly type = '[Auth] update profile action';
 	constructor(public userDetails: UserDetails) {}
 }
 

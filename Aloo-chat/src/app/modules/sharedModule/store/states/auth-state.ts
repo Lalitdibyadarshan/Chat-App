@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { UserDetails } from 'src/app/modules/apiModule/authService/models/userDetails.model';
-import { SignUpAction, InitializeExistingSessionAction, SignOutAction } from '../actions/auth-action';
+import { InitializeExistingSessionAction, SignOutAction, UpdateProfileAction } from '../actions/auth-action';
 import { Injectable } from '@angular/core';
 
 interface AuthStateInterface {
@@ -29,13 +29,11 @@ export class AuthState {
 		return state.isloggedIn;
 	}
 
-	@Action(SignUpAction)
-	signUpUser(ctx: StateContext<AuthStateInterface>, action: SignUpAction) {
+	@Action(UpdateProfileAction)
+	updateUser(ctx: StateContext<AuthStateInterface>, action: UpdateProfileAction) {
 		ctx.patchState({
 			loggedInUser: action.userDetails,
-			isloggedIn: true
 		});
-		console.log(action.userDetails)
 	}
 
 	@Action(SignOutAction)
@@ -52,6 +50,5 @@ export class AuthState {
 			loggedInUser: action.existingSessionDetails,
 			isloggedIn: true
 		});
-		console.log(action.existingSessionDetails)
 	}
 }

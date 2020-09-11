@@ -11,6 +11,10 @@ const routes: Routes = [
 		loadChildren: () => import('./modules/chatModule/chat.module').then(m => m.ChatModule)
 	},
 	{
+		path: 'profile',
+		loadChildren: () => import('./modules/profileModule/profile.module').then(m => m.ProfileModule)
+	},
+	{
 		path: '',
 		pathMatch: 'full',
 		redirectTo: '/auth'

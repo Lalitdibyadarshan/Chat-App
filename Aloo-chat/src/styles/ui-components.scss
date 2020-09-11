@@ -108,6 +108,10 @@
 		position: fixed !important;
 	}
 
+	.image-circle {
+		border-radius: 50%;
+	}
+
 	.status {
 		&--online {
 			&::before {

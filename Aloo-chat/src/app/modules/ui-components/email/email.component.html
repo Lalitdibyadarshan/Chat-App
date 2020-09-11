@@ -1,4 +1,4 @@
-<mat-form-field class="full-width" appearance="outline">
+<mat-form-field class="full-width" [appearance]="appearance">
 	<mat-label>Email</mat-label>
 	<input matInput [formControl]="formControl" placeholder="Ex. pat@example.com">
 	<mat-error *ngIf="formControl.hasError('email') && !formControl.hasError('required')" class="warning">

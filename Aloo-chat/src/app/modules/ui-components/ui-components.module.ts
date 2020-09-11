@@ -21,6 +21,7 @@ import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { AnimationComponent } from './animation/animation.component';
 import { ProgressBarLoaderComponent } from './progress-bar-loader/progress-bar-loader.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 @NgModule({
 	declarations: [
 		ProgressBarComponent,
@@ -33,7 +34,8 @@ import { ProgressBarLoaderComponent } from './progress-bar-loader/progress-bar-l
 		DatePickerComponent,
 		AlertComponent,
 		AnimationComponent,
-		ProgressBarLoaderComponent
+		ProgressBarLoaderComponent,
+		ImageUploadComponent
 	],
 	imports: [
 		CommonModule,
@@ -57,7 +59,8 @@ import { ProgressBarLoaderComponent } from './progress-bar-loader/progress-bar-l
 		DatePickerComponent,
 		AlertComponent,
 		AnimationComponent,
-		ProgressBarLoaderComponent
+		ProgressBarLoaderComponent,
+		ImageUploadComponent
 	],
 	providers: []
 })

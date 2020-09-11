@@ -5,6 +5,7 @@ import { SignupConstant } from './constants/signup.constant';
 import { SignUpPayload } from 'src/app/modules/apiModule/authService/models/signUpPayload';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/apiModule/authService/auth.service';
+import * as _ from 'lodash';
 
 @Component({
 	selector: 'app-signup',
@@ -42,8 +43,7 @@ export class SignUpComponent implements OnInit {
 
 	submit(): void {
 		const invalidForm = this.signUpForms.filter(form => form.invalid);
-		// TODO add lodash
-		if (invalidForm.length === 0) {
+		if (_.isEmpty(invalidForm)) {
 			const { firstName, lastName } = this.signUpForms[0].value;
 			const { email, phoneNumber } = this.signUpForms[1].value;
 			const { newPassword } = this.signUpForms[2].value;

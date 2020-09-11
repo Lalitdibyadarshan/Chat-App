@@ -1,0 +1,25 @@
+.image-upload {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem;
+	padding: 1rem;
+
+	input {
+		display: none;
+	}
+
+	.image-preview{
+		height: 350px;
+		width: 350px;
+		margin-bottom: 0.5rem;
+	}
+
+	.button-group {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	button {
+		width: max-content;
+	}
+}

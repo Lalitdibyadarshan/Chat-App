@@ -11,7 +11,7 @@ import { AlertService } from '../../sharedModule/services/alert.service';
 import { Alert } from '../../sharedModule/models/alert.model';
 import { AlertType } from '../../sharedModule/enums/alert-type.enum';
 import { Store } from '@ngxs/store';
-import { InitializeExistingSessionAction, SignUpAction, SignOutAction } from '../../sharedModule/store/actions/auth-action';
+import { InitializeExistingSessionAction, SignOutAction } from '../../sharedModule/store/actions/auth-action';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../sharedModule/services/loader.service';
 import { HttpService } from '../httpService/httpService';
@@ -20,6 +20,8 @@ import { HttpService } from '../httpService/httpService';
 	providedIn: 'root'
 })
 export class AuthService extends HttpService {
+	private static readonly LOGIN_PAGE_URL = '/auth/login';
+	private static readonly CHAT_URL = '/chat';
 
 	constructor(
 		private fireAuth: AngularFireAuth,
@@ -84,20 +86,23 @@ export class AuthService extends HttpService {
 	}
 
 	private fetchAndStoreUserById(id: string) {
+		const returnUrl = this.router.routerState.snapshot.url !== AuthService.LOGIN_PAGE_URL ?
+			this.router.routerState.snapshot.url :
+			AuthService.CHAT_URL;
 		this.showLoader(this.firestore.doc<UserDetails>(`users/${id}`)
 			.valueChanges())
 			.pipe(take(1))
 			.subscribe(userdetails => {
 				sessionStorage.setItem('existingSession', 'true');
 				this.store.dispatch(new InitializeExistingSessionAction(userdetails));
-				this.router.navigateByUrl('/chat');
+				this.router.navigateByUrl(returnUrl);
 			});
 	}
 
 	logout() {
 		this.showLoader(from(this.fireAuth.signOut())).subscribe(() => {
 			this.store.dispatch(new SignOutAction());
-			this.router.navigateByUrl('/auth');
+			this.router.navigateByUrl(AuthService.LOGIN_PAGE_URL);
 			sessionStorage.removeItem('existingSession');
 		});
 	}

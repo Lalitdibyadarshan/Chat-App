@@ -1,7 +1,6 @@
 <mat-form-field class="full-width" [appearance]="appearance">
 	<mat-label>{{getLableName()}}</mat-label>
 	<input matInput [type]="type" [formControl]="formControl" (blur)="formatInput()" [placeholder]="placeHolder">
-
 	<mat-error *ngIf="formControl.hasError('required')" class="warning">
 		{{labelName}} is <b class="warning">required</b>
 	</mat-error>

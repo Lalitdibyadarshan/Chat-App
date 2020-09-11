@@ -16,7 +16,6 @@ export class ChatRootComponent implements OnInit {
 
 	ngOnInit() {
 		this.firebaseService.getAllUsers().subscribe(users => {
-			console.log(users)
 			this.userData = users;
 		});
 	}

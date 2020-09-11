@@ -1,0 +1,10 @@
+<div class="image-upload">
+	<img [src]="imgsrc" [fallbackImageURL]="defaultImagePath" [override]='true' alt="preview" class="image-preview">
+	<input type='file'[formControl]="imageFormControl" id="image" (change)="showPreview($event)" #imageInput>
+	<div class="button-group">
+		<button (click)="imageInput.click()" class="btn btn-primary">{{label}}</button>
+		<button (click)="upload()" class="btn btn-secondary" [disabled]='!selectedImage'>Upload</button>
+	</div>
+</div>
+
+

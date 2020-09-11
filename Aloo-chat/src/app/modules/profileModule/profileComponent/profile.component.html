@@ -1,0 +1,71 @@
+<div class="profile" *ngIf='currentUser'>
+	<div class="profile--left-panel">
+		<img *ngIf="!isEditMode" [override]='true' class="profile-image image-circle" [src]="currentUser?.picture" [fallbackImageURL]='fallbackImage' [alt]="currentUser?.firstName">
+		<app-image-upload *ngIf="isEditMode" [controlName]="'picture'" (uploadComplete)="saveChanges($event)" [parentForm]="profileForm" [imgsrc]="currentUser?.picture" [label]="'Select Profile picture'"></app-image-upload>
+	</div>
+	<div class="profile--right-panel">
+		<div class="profile-title">
+			<h1>My Profile Details</h1>
+			<button mat-menu-item  *ngIf="!isEditMode" (click)="isEditMode=!isEditMode">
+				<mat-icon>edit</mat-icon>
+				<span>Edit</span>
+			</button>
+			<button mat-menu-item  *ngIf="isEditMode" (click)="saveChanges()">
+				<mat-icon>save</mat-icon>
+				<span>Save</span>
+			</button>
+		</div>
+		<div class="profile-container background-card">
+			<div [ngClass]="{'controller': !isEditMode}">
+				<label for="firstname" *ngIf="!isEditMode">First Name: </label>
+				<p *ngIf="!isEditMode">{{currentUser?.firstName}}</p>
+				<app-input
+					*ngIf="isEditMode"
+					[parentForm]="profileForm"
+					[controlName]="'firstName'"
+					[outlineAppearance]='false'
+					[labelName]="'First Name'"
+					[initialValue]="currentUser?.firstName"
+					[required]='true'>
+				</app-input>
+			</div>
+			<div [ngClass]="{'controller': !isEditMode}">
+				<label for="lastname" *ngIf="!isEditMode && currentUser?.lastName">Last Name: </label>
+				<p *ngIf="!isEditMode && currentUser?.lastName">{{currentUser?.lastName}}</p>
+				<app-input
+					*ngIf="isEditMode"
+					[parentForm]="profileForm"
+					[controlName]="'lastName'"
+					[outlineAppearance]='false'
+					[labelName]="'Last Name'"
+					[initialValue]='currentUser?.lastName'>
+				</app-input>
+			</div>
+			<div [ngClass]="{'controller': !isEditMode}">
+				<label for="email" *ngIf="!isEditMode">Email: </label>
+				<p *ngIf="!isEditMode">{{currentUser?.email}}</p>
+				<app-input-email
+					*ngIf="isEditMode"
+					[parentForm]="profileForm"
+					[controlName]="'email'"
+					[outlineAppearance]='false'
+					[initialValue]='currentUser?.email'
+					[required]='true'>
+				</app-input-email>
+			</div>
+			<div [ngClass]="{'controller': !isEditMode}">
+				<label for="mobilenumber" *ngIf="!isEditMode && currentUser?.mobileNumber">Mobile Number: </label>
+				<p *ngIf="!isEditMode && currentUser?.mobileNumber">{{currentUser?.mobileNumber}}</p>
+				<app-input
+					*ngIf="isEditMode"
+					[parentForm]="profileForm"
+					[controlName]="'mobileNumber'"
+					[outlineAppearance]='false'
+					[labelName]="'Mobile Number'"
+					[initialValue]="currentUser?.mobileNumber">
+				</app-input>
+			</div>
+		</div>
+
+	</div>
+</div>
